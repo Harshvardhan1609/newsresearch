@@ -2,10 +2,15 @@
 AI News Researcher
 Entry point for the application.
 Loads configuration from .env and verifies the Gemini API key is present.
+
+Usage:
+    python main.py          # verify config then hint to run Streamlit
+    streamlit run app.py    # launch the full web UI
 """
 
 import os
 import sys
+import subprocess
 from dotenv import load_dotenv
 
 
@@ -19,6 +24,7 @@ def load_config() -> str:
     if not api_key or api_key == "your_key_here":
         print("ERROR: GEMINI_API_KEY is missing or still set to the placeholder value.")
         print("       Please update your .env file with a real API key.")
+        print("       Get one free at: https://aistudio.google.com/app/apikey")
         sys.exit(1)
 
     return api_key
@@ -26,10 +32,16 @@ def load_config() -> str:
 
 def main():
     api_key = load_config()
-    print("API key loaded successfully.")
-    # TODO: Initialize the Gemini client and start the news researcher
-    # import google.generativeai as genai
-    # genai.configure(api_key=api_key)
+    print("✅ API key loaded successfully.")
+    print()
+    print("To launch the web UI, run:")
+    print("    streamlit run app.py")
+    print()
+
+    # Optionally auto-launch Streamlit if --launch flag is passed
+    if "--launch" in sys.argv:
+        print("🚀 Launching Streamlit app…")
+        subprocess.run([sys.executable, "-m", "streamlit", "run", "app.py"], check=True)
 
 
 if __name__ == "__main__":
