@@ -42,7 +42,7 @@ with st.sidebar:
     st.divider()
 
     if GEMINI_API_KEY and GEMINI_API_KEY != "your_key_here":
-        st.success("✅ API connected", icon="🟢")
+        st.success("✅ API connected jai jai ai =", icon="🟢")
         genai.configure(api_key=GEMINI_API_KEY)
         api_ready = True
     else:
