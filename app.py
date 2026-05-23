@@ -38,7 +38,7 @@ if "last_topic" not in st.session_state:
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("## ⚙️ Configuration")
+    st.markdown("## ⚙️ Configurationss")
     st.divider()
 
     if GEMINI_API_KEY and GEMINI_API_KEY != "your_key_here":
